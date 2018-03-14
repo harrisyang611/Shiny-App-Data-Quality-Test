@@ -1,0 +1,109 @@
+readme
+
+Required Package:
+data.table,openxlsx,shiny,shinydashboard,dplyr,dtplyr,ggplot2,knitr,stats,scales,gridExtra,tm,wordcloud,factoextra,C50,SnowballC
+
+
+Hi All, this is a manual for this software.
+
+There is a file called "App.R" in th same folder, open it using 'RStudio'. Click the small down arror right to the'Run App',select 'Run External'. then click 'Run App' and if everything works, an HTML file is opened in your default Browser
+
+When you open the HTML file, please read the documents I write on it. This file can only support csv, xlsx and rda file for now.
+
+We provide three features for now.
+
+1. Data Quality
+
+Every column would be tested as its original type stored in the file. If you want to convert them to numeric/date/character type, please type the column in the text column. Please type in the exact column name, and column names can be separated using comma, like "A,B" where A and B are two distinct column names. Only put a comma if there is another variable!!!
+
+Note 1 : Once you type some varible names in the input box, the variable types will NOT change in the original file!!! Only the content in the report will change!
+Note 2 : Once you download the file , you have to re-load the data file because a temp Rmd file is creadted during the process leading to a change of wr and I have tried to fix this problem with reseting the wr after the rmd file and skip the temp file, but all failed. It still worth trying if anyone else is interested.
+
+2. Data Overview for columns
+
+Draw the box plot/histogram for numeric type and a word cloud for character type.
+
+3. Data Analysis
+
+You can use first tab to change how many columns you want (default is 2) and with those additional tabs, you can easily choose the variables you want to analyze on. After the input variable is selected, you can select the analysis you want to conduct. For now, we provide three types of analysis,
+
+1. K Means Clustering 
+Select two input variable , it will generate a k-means clustering chart below.
+
+2. Decision Tree
+Select any number of independent variables, select the check box and choose a response variable. A decision tree classification will be generated. If users want to save the result, they can click on the button below to download the csv file containing the predicted result and the differences.
+
+3. Linear Regression
+Select any number of independent variables, select the check box and choose a response variable. A Linear regression analysis will be generated. If users want to use power on specific column, they can just choose one from the given values.
+
+
+Future Thoughts:
+
+That is some opinions can be applied in the future
+
+1. Do some analysis between files. Importing multiple files. One easy example would be merging several files with same columns( pulling from same system ). 
+
+2. Improve the DQ function, which is the file 'characterize_funs_improved.R'
+	We can add a pop up window to convert the variable types (like the sample 'DQ Type Converter' in the file 'Pic Samples For Future Improvement')
+	We can start to customize the DQ for different projects like AML or BESS.
+	We can put the logic for invaild string or special character.
+	We can improve the analysis for date better like including the all-time most frequent records or medium of the dates.
+	We can add more clarification in the front of DQ for the Basic Explaination of types.
+
+3. Change the Data Overview all, by generating a report containing all the charts for all columns (like box plot for numeric and histogram for character) 
+
+4. Improve the existing analysis / Add different analysis methods
+	Add more text explaination for different analysis methods
+	Inform users to read the summary + instruction MUST! put some box maybe
+	Put instructions closer to the check-box or any input boxes.
+
+	For now, Linear Regression can be improved in such ways :
+			1. Plot Charts like regression line and error tracking
+			2. Save the analysis/charts into report
+		 Decision Tree can be improved in such ways :
+			1. Add an order/sequence to the response variable so the csv file can include difference level
+			2. Generate a report for the decision tree logic
+	       	 K mean clustering :
+			1. Use texts/summary to show the summary of each cluster
+			2. Use an unique key for each point in the chart
+
+5. Provide more post-analysis functions/features. After the chart is drawn, how to do post analysis can be another issue. Make the analkysis more dynamic.
+
+6. Figure a way to upload the HTML to any shared drive so everyone can use it without running R on terminals.
+
+	Here is what I have tried(failed, but maybe worth trying if you have better skills than me) 
+	a. I wanted to use 'shinyapps.io' (the host which support shiny app), but it may involve the upload bank data to online(which is risk)
+	b. I tried to use batch file ,but the library wont run
+	c. The sharepoint and inside drive(k Drive) dont support R
+
+	Some potential solutions
+	a. Deliver 1-by-1 , piece-by-piece or team-by-team
+	b. Maybe there is a better solution/packaging method MS Azure may be another option
+	c. Try to package and upload to Internal Git/BitBusket if possible
+	d. The bank may have a cloud-based environment/Virtual box in the future so people can run this on the Cloud-Based R (That is the DREAM)
+
+
+In the Ideal World, most analysis should be automated and can be driven by anyone who don't understand STATs.Creating an HTML-based analysis tool can be the very first step.
+
+
+Signiture
+Harris 611 Yang
+July 25th 2017
+
+Harris 611 Yang
+August 1st 2017
+
+Harris 611 Yang
+August 4th 2017
+
+Harris 611 Yang
+August 9th 2017
+
+Harris 611 Yang
+August 15th 2017
+
+Harris 611 Yang
+August 17th 2017
+
+
+
